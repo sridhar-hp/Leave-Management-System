@@ -1,0 +1,155 @@
+/* ------------------------------------------------------ */
+/* FORM PAGE SCOPE – DOES NOT AFFECT MENU */
+/* ------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap');
+
+.leave-form-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;   /* ✅ Important: stack heading + form vertically */
+  align-items: center;      /* ✅ Centers heading properly */
+  padding-bottom: 56px ;
+
+  /* ✅ New premium yellow gradient */
+  background: linear-gradient(
+    135deg,
+    #fff7cc,
+    #ffef99,
+    #ffe680
+  );
+}
+
+
+/* Heading */
+.leave-form-page h1 {
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  width: 100%;
+  font-size: 40px;
+  font-weight: 700;
+
+
+  color: #1e293b;
+  margin-bottom: 25px;
+
+  /* ✅ Clean elegant shadow */
+  text-shadow: 1px 2px 4px rgba(0,0,0,0.20);
+}
+
+
+
+
+/* FORM CARD */
+/* .leave-form-page form {
+  width: 650px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+} */
+
+.leave-form-page form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 95px;   /* space between columns */
+  row-gap: 25px;      /* space between rows */
+
+  width: 1100px;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+
+
+/* FIELD GROUPS */
+.lafn,
+.lafi,
+.lafd,
+.laft,
+.laffd,
+.laftd,
+.lafr {
+  display: flex;
+  flex-direction: column;
+}
+
+/* LABEL */
+.leave-form-page label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+/* INPUTS */
+.la,
+.leave-form-page select,
+.leave-form-page textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+  font-size: 15px;
+  transition: 0.2s;
+  outline: none;
+}
+
+/* FOCUS EFFECT */
+.la:focus,
+.leave-form-page select:focus,
+.leave-form-page textarea:focus {
+  border-color: #2563eb;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+
+/* TEXTAREA */
+.leave-form-page textarea {
+  height: 110px;
+  resize: none;
+}
+
+/* SUBMIT BUTTON */
+.lafs {
+  width: 100%;
+  padding: 12px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.lafs:hover {
+  background: #1d4ed8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .leave-form-page form {
+    width: 90%;
+    padding: 25px;
+  }
+}
+.lafr {
+  grid-column: span 3; /* Reason input full width */
+}
+
+.lafs {
+  grid-column: span 3; /* Submit full width */
+}
+
+.sdcontant {
+  padding: 0px;
+}
