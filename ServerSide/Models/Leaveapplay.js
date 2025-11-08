@@ -14,7 +14,7 @@ const LeaveApplay=sequelize.define('leaveapplaylist',{
     StaffId: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
+        // unique: false
     },
     PhoneNo: {
         type: DataTypes.STRING

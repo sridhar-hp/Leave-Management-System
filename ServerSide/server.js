@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const sequelize = require("./db");
 const User = require("./Models/User");
+const LeaveApplay = require("./Models/Leaveapplay");
 require('dotenv').config();
 
 sequelize.sync().then(() => {
@@ -11,7 +12,7 @@ sequelize.sync().then(() => {
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+//============== LOGIN VREFICATION =====================================================//
 app.post("/login", async (req, res) => {
   const { staffId, password, role } = req.body;
 
@@ -34,6 +35,37 @@ app.post("/login", async (req, res) => {
   } catch (err) {
     console.log(err);
     return res.status(500).json({ message: "Server error" });
+  }
+});
+//=============================LEAVE APPLAY ========================================================//
+app.post("/Leaveapply", async(req,res)=>{
+  const {name,StaffId,PhoneNo,Department,EmailId,Leavetype,FromDate,ToDate,Reason}=req.body;
+
+  try{
+    if(!name || !StaffId || !PhoneNo || !Department || !EmailId || !Leavetype || !FromDate || !ToDate || !Reason){
+      return  res.status(400).json({success:false,message:"All fields are required"});
+    }
+
+    const LeaveForm = await LeaveApplay.create({
+      name,
+      StaffId,
+      PhoneNo,
+      Department,
+      EmailId,
+      Leavetype,
+      FromDate,
+      ToDate,
+      Reason      
+    });
+
+    return res.status(201).json({success:true, message:"Leave applied successfully but the status is pendign.If your leave apprved we will notify you via email and message."});
+
+
+  }
+
+  catch(err){
+    console.log(err);
+    return res.status(500).json({ success:false, message:"Server error" });
   }
 });
 
