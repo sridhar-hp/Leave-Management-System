@@ -914,11 +914,18 @@ export default function LoginPage() {
 
       if (response.data.role === "admin") {
         navigate("/admin-dashboard");
-      } else if (response.data.role === "staff") {
-        navigate("/staff-dashboard");
-      } else {
+      } 
+      
+      else if (response.data.role === "staff") {
+
+        navigate("/staff-dashboard",{
+          state:{staffId:response.data.staffId}
+        });
+ } 
+      else {
         alert("Invalid role");
       }
+
     } catch (err) {
       console.log(err);
       alert("Login failed");

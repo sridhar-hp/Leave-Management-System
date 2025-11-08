@@ -39,16 +39,15 @@ app.post("/login", async (req, res) => {
 });
 //=============================LEAVE APPLAY ========================================================//
 app.post("/Leaveapply", async(req,res)=>{
-  const {name,StaffId,PhoneNo,Department,EmailId,Leavetype,FromDate,ToDate,Reason}=req.body;
+  const {name,PhoneNo,Department,EmailId,Leavetype,FromDate,ToDate,Reason}=req.body;
 
   try{
-    if(!name || !StaffId || !PhoneNo || !Department || !EmailId || !Leavetype || !FromDate || !ToDate || !Reason){
+    if(!name || !PhoneNo || !Department || !EmailId || !Leavetype || !FromDate || !ToDate || !Reason){
       return  res.status(400).json({success:false,message:"All fields are required"});
     }
 
     const LeaveForm = await LeaveApplay.create({
       name,
-      StaffId,
       PhoneNo,
       Department,
       EmailId,
