@@ -825,6 +825,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.CSS"
 const roles = { STAFF: "staff", ADMIN: "admin" };
+// import { useLocation } from "react-router-dom";
+
 
 //
 // ✅ STAFF LOGIN FORM (OUTSIDE COMPONENT)
@@ -909,7 +911,7 @@ export default function LoginPage() {
         password,
         role,//
       });
-
+          const staffId=response.data.staffId;
       alert(response.data.message);
 
       if (response.data.role === "admin") {
@@ -918,7 +920,7 @@ export default function LoginPage() {
       
       else if (response.data.role === "staff") {
 
-        navigate("/staff-dashboard",{
+        navigate(`/staff-dashboard/${staffId}`,{
           state:{staffId:response.data.staffId}
         });
  } 
@@ -947,7 +949,80 @@ export default function LoginPage() {
     <>
 
       {/* ✅ FIXED CSS */}
-      {/* <style>{`
+      
+      
+
+      <div className={`container ${role}`}>
+        
+        {/* ✅ Properly passing props */}
+        {role === roles.STAFF ? (
+          <StaffLoginForm
+            staffId={staffId}
+            setstaffId={setstaffId}
+            password={password}
+            setPassword={setPassword}
+            handlelogin={handlelogin}
+          />
+        ) : (
+          <AdminLoginForm
+            staffId={staffId}
+            setstaffId={setstaffId}
+            password={password}
+            setPassword={setPassword}
+            handlelogin={handlelogin}
+          />
+        )}
+
+        {/* ✅ Info panel */}
+        {role === roles.STAFF ? (
+          <InfoPanel
+            title="Admin Portal"
+            message="Switch to admin login to manage staff & students"
+            buttonText="Go to Admin"
+            onClick={() => setRole(roles.ADMIN)}
+          />
+        ) : (
+          <InfoPanel
+            title="Staff Portal"
+            message="Switch to staff login"
+            buttonText="Go to Staff"
+            onClick={() => setRole(roles.STAFF)}
+          />
+        )}
+
+        {/* ✅ Role buttons */}
+        <div className="role-toggle">
+          <button
+            className={role === roles.STAFF ? "active" : ""}
+            onClick={() => setRole(roles.STAFF)}
+          >
+            Staff
+          </button>
+
+          <button
+            className={role === roles.ADMIN ? "active" : ""}
+            onClick={() => setRole(roles.ADMIN)}
+          >
+            Admin
+          </button>
+        </div>
+      </div>
+    </>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+{/* <style>{`
         * {
           box-sizing: border-box;
           font-family: 'Poppins', sans-serif;
@@ -1054,63 +1129,3 @@ export default function LoginPage() {
           color: white;
         }
       `}</style> */}
-      
-
-      <div className={`container ${role}`}>
-        
-        {/* ✅ Properly passing props */}
-        {role === roles.STAFF ? (
-          <StaffLoginForm
-            staffId={staffId}
-            setstaffId={setstaffId}
-            password={password}
-            setPassword={setPassword}
-            handlelogin={handlelogin}
-          />
-        ) : (
-          <AdminLoginForm
-            staffId={staffId}
-            setstaffId={setstaffId}
-            password={password}
-            setPassword={setPassword}
-            handlelogin={handlelogin}
-          />
-        )}
-
-        {/* ✅ Info panel */}
-        {role === roles.STAFF ? (
-          <InfoPanel
-            title="Admin Portal"
-            message="Switch to admin login to manage staff & students"
-            buttonText="Go to Admin"
-            onClick={() => setRole(roles.ADMIN)}
-          />
-        ) : (
-          <InfoPanel
-            title="Staff Portal"
-            message="Switch to staff login"
-            buttonText="Go to Staff"
-            onClick={() => setRole(roles.STAFF)}
-          />
-        )}
-
-        {/* ✅ Role buttons */}
-        <div className="role-toggle">
-          <button
-            className={role === roles.STAFF ? "active" : ""}
-            onClick={() => setRole(roles.STAFF)}
-          >
-            Staff
-          </button>
-
-          <button
-            className={role === roles.ADMIN ? "active" : ""}
-            onClick={() => setRole(roles.ADMIN)}
-          >
-            Admin
-          </button>
-        </div>
-      </div>
-    </>
-  );
-}

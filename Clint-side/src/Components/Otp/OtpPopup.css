@@ -1,0 +1,89 @@
+/* 🌙 Dark overlay behind popup */
+.otp-popup {
+  position: fixed;             /* stays in one place even when scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;                 /* covers full screen */
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* transparent dark background */
+  display: flex;               /* center child box */
+  justify-content: center;
+  align-items: center;
+  z-index: 999;                /* ensures popup is on top of everything */
+}
+
+/* 🧊 Popup box container */
+.otp-box {
+  background: #ffffff;         /* white box */
+  padding: 30px;
+  border-radius: 12px;
+  width: 350px;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+  text-align: center;
+  animation: fadeIn 0.3s ease; /* smooth appear animation */
+}
+
+/* 🔤 Title and text */
+.otp-box h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.otp-box p {
+  color: #555;
+  font-size: 14px;
+}
+
+/* 🔢 OTP input box */
+.otp-box input {
+  width: 80%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 18px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.otp-box input:focus {
+  border-color: #007bff;       /* blue border when typing */
+}
+
+/* 🧭 Buttons */
+.otp-box button {
+  margin: 10px 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  background-color: #007bff;   /* blue button */
+  transition: background-color 0.2s;
+}
+
+.otp-box button:hover {
+  background-color: #0056b3;   /* darker blue on hover */
+}
+
+/* ❌ Cancel button (red) */
+.otp-box button:nth-child(2) {
+  background-color: #dc3545;
+}
+
+.otp-box button:nth-child(2):hover {
+  background-color: #a71d2a;
+}
+
+/* ✅ Message text (success or error) */
+.otp-box p:last-child {
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+/* ✨ Smooth fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
