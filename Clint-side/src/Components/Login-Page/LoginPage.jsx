@@ -911,7 +911,8 @@ export default function LoginPage() {
         password,
         role,//
       });
-          const staffId=response.data.staffId;
+          const loggedStaffId = response.data.staffId;
+
       alert(response.data.message);
 
       if (response.data.role === "admin") {
@@ -920,17 +921,18 @@ export default function LoginPage() {
       
       else if (response.data.role === "staff") {
 
-        navigate(`/staff-dashboard/${staffId}`,{
-          state:{staffId:response.data.staffId}
-        });
+        navigate(`/staff-dashboard/${loggedStaffId}`, {
+    state: { staffId: response.data.staffId }
+});
+
  } 
       else {
-        alert("Invalid role");
+        alert("Invalid role ❌");
       }
 
     } catch (err) {
       console.log(err);
-      alert("Login failed");
+      alert("Login failed ❌");
     }
   };
 

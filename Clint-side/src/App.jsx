@@ -11,7 +11,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/staff-dashboard" element={<StaffDashbord />} >
+        <Route path="/staff-dashboard/:staffId" element={<StaffDashbord />}>
+
         <Route path="Home" element={<Home />} />
         <Route path="LeaveApplayform" element={<LeaveApplayform />}/>
 

@@ -8,14 +8,14 @@ function StaffDashbord() {
     <div className="sdcontainer">
       
       <div className="sdmenu">
-        <img src="" alt="collage logo" />
+        <img src={null} alt="collage logo" />
         <h4>Staff dashboard</h4>
 
         <NavLink to="Home"> HOME </NavLink>
         
         <NavLink to="LeaveApplayForm" > Applay Leave </NavLink>
         
-        <NavLink to="/" > back </NavLink>
+        <NavLink to="/" > Logout </NavLink>
       </div>
 
       <div className="sdcontant">

@@ -8,7 +8,7 @@ function OtpPopup({ staffId, email, onVerify, onClose }) {
     const [message, setMessage] = useState("");
 
 
-    const handleVerify = async (e)=>{
+    const handleverify = async (e)=>{
         e.preventDefault();
         try {
       const res = await axios.post("http://localhost:8081/api/verify-otp", {
@@ -24,7 +24,7 @@ function OtpPopup({ staffId, email, onVerify, onClose }) {
       }
     } catch (err) {
       console.error(err);
-      setMessage("Server error while verifying OTP");
+      setMessage("Server error while verifying OTP ❌");
     }
   };
 
@@ -39,7 +39,8 @@ function OtpPopup({ staffId, email, onVerify, onClose }) {
           value={otp}
           onChange={(e) => setOtp(e.target.value)}
         />
-        <button onClick={handleVerify}>Verify</button>
+        <button onClick={handleverify}>Verify</button>
+
         <button onClick={onClose}>Cancel</button>
         <p>{message}</p>
       </div>
