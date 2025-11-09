@@ -1,9 +1,12 @@
 const express = require("express");
+const otpRoutes = require("./Routes/OtpRoutes");
 const cors = require("cors");
 const sequelize = require("./db");
 const User = require("./Models/User");
 const LeaveApplay = require("./Models/Leaveapplay");
 require('dotenv').config();
+
+
 
 sequelize.sync().then(() => {
   console.log("✅ All models synced.");
@@ -12,6 +15,8 @@ sequelize.sync().then(() => {
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use("/api", otpRoutes);
+
 //============== LOGIN VREFICATION =====================================================//
 app.post("/login", async (req, res) => {
   const { staffId, password, role } = req.body;
@@ -39,7 +44,7 @@ app.post("/login", async (req, res) => {
 });
 //=============================LEAVE APPLAY ========================================================//
 app.post("/Leaveapply", async(req,res)=>{
-  const {name,PhoneNo,Department,EmailId,Leavetype,FromDate,ToDate,Reason}=req.body;
+  const {name,PhoneNo,Department,EmailId,Leavetype,FromDate,ToDate,Reason,StaffId}=req.body;
 
   try{
     if(!name || !PhoneNo || !Department || !EmailId || !Leavetype || !FromDate || !ToDate || !Reason){
@@ -54,10 +59,11 @@ app.post("/Leaveapply", async(req,res)=>{
       Leavetype,
       FromDate,
       ToDate,
-      Reason      
+      Reason,
+      StaffId      
     });
 
-    return res.status(201).json({success:true, message:"Leave applied successfully but the status is pendign.If your leave apprved we will notify you via email and message."});
+    return res.status(201).json({success:true, message:"Leave applied successfully. Status is pending. If your leave is approved, we will notify you via email."});
 
 
   }
