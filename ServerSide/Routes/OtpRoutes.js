@@ -40,7 +40,7 @@ router.post("/verify-otp", async (req, res) => {
     // Delete OTP after use
     await record.destroy();
 
-    return res.json({ success: true, message: "OTP verified successfully" });
+    return res.json({ success: true, message: "OTP verified successfully ✅" });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ success: false, message: "Server error" });

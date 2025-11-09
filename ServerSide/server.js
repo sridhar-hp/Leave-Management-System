@@ -27,11 +27,11 @@ app.post("/login", async (req, res) => {
     });
 
     if (!user) {
-      return res.status(401).json({ message: "Invalid staff ID or password" });
+      return res.status(401).json({ message: "Invalid staff ID or password ❌" });
     }
 
     return res.json({
-      message: "Login successful",
+      message: "Login successful ✅",
       role: user.role,
       name: user.name,
       staffId: user.staff_id
@@ -39,7 +39,7 @@ app.post("/login", async (req, res) => {
 
   } catch (err) {
     console.log(err);
-    return res.status(500).json({ message: "Server error" });
+    return res.status(500).json({ message: "Server error ❌" });
   }
 });
 //=============================LEAVE APPLAY ========================================================//
@@ -63,17 +63,17 @@ app.post("/Leaveapply", async(req,res)=>{
       StaffId      
     });
 
-    return res.status(201).json({success:true, message:"Leave applied successfully. Status is pending. If your leave is approved, we will notify you via email."});
+    return res.status(201).json({success:true, message:"Leave applied successfully ✅. Status is pending. If your leave is approved, we will notify you via message ✅."});
 
 
   }
 
   catch(err){
     console.log(err);
-    return res.status(500).json({ success:false, message:"Server error" });
+    return res.status(500).json({ success:false, message:"Server error ❌" });
   }
 });
 
 app.listen(8081, () => {
-  console.log("Server running on port 8081");
+  console.log("✅Server running on port 8081");
 });
