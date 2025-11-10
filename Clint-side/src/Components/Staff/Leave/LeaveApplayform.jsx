@@ -83,15 +83,15 @@ function LeaveApplayform() {
                 setShowOtpPopup(false);
 
                 setLeaveApplayForm({
-                name: "",
-                PhoneNo: "",
-                Department: "",
-                EmailId: "",
-                Leavetype: "",
-                FromDate: "",
-                ToDate: "",
-                Reason: ""
-            });
+                    name: "",
+                    PhoneNo: "",
+                    Department: "",
+                    EmailId: "",
+                    Leavetype: "",
+                    FromDate: "",
+                    ToDate: "",
+                    Reason: ""
+                });
             }
         } catch (err) {
             console.error(err);

@@ -828,7 +828,9 @@ const roles = { STAFF: "staff", ADMIN: "admin" };//this is use in Infopanalel
 // import { useLocation } from "react-router-dom";
 
 function StaffLoginForm({ staffId, setstaffId, password, setPassword, handlelogin }) {
+
     return (
+
         <div className="login-box">
             <h2>Staff Sign In</h2>
             <form onSubmit={handlelogin}>
@@ -858,7 +860,9 @@ function StaffLoginForm({ staffId, setstaffId, password, setPassword, handlelogi
 // ✅ ADMIN LOGIN FORM (OUTSIDE COMPONENT)
 //
 function AdminLoginForm({ staffId, setstaffId, password, setPassword, handlelogin }) {
+
     return (
+
         <div className="login-box">
             <h2>Admin Sign In</h2>
             <form onSubmit={handlelogin}>
@@ -888,14 +892,13 @@ function AdminLoginForm({ staffId, setstaffId, password, setPassword, handlelogi
 // ✅ MAIN LOGINPAGE COMPONENT
 //
 export default function LoginPage() {
+    
     const [role, setRole] = useState(roles.STAFF);
     const [staffId, setstaffId] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    //
     // ✅ LOGIN HANDLER
-    //
     const handlelogin = async (e) => {
         e.preventDefault();
 
@@ -905,7 +908,7 @@ export default function LoginPage() {
             const response = await axios.post("http://localhost:8081/login", {
                 staffId,
                 password,
-                role,//
+                role,
             });
             const loggedStaffId = response.data.staffId;
 
@@ -931,10 +934,7 @@ export default function LoginPage() {
             alert("Login failed ❌");
         }
     };
-
-    //
     // ✅ INFO PANEL
-    //
     const InfoPanel = ({ title, message, buttonText, onClick }) => (
         <div className="welcome-box">
             <h2>{title}</h2>
@@ -945,11 +945,6 @@ export default function LoginPage() {
 
     return (
         <>
-
-            {/* ✅ FIXED CSS */}
-
-
-
             <div className={`container ${role}`}>
 
                 {/* ✅ Properly passing props */}

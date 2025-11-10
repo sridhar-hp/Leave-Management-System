@@ -7,19 +7,19 @@ import Home from "./Components/Staff/Home/Home.jsx";
 import ADash from "./Components/Admin/AdminDashbord/ADash.jsx";
 
 const App = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/staff-dashboard/:staffId" element={<StaffDashbord />}>
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<LoginPage />} />
+                <Route path="/staff-dashboard/:staffId" element={<StaffDashbord />}>
 
-        <Route path="Home" element={<Home />} />
-        <Route path="LeaveApplayform" element={<LeaveApplayform />}/>
+                    <Route path="Home" element={<Home />} />
+                    <Route path="LeaveApplayform" element={<LeaveApplayform />} />
 
-        </Route>
-        <Route path="/admin-dashboard" element={<ADash />}/>
-      </Routes>
-    </BrowserRouter>
-  );
+                </Route>
+                <Route path="/admin-dashboard" element={<ADash />} />
+            </Routes>
+        </BrowserRouter>
+    );
 };
 export default App;
