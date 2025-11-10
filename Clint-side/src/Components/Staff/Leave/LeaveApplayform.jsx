@@ -69,7 +69,7 @@ function LeaveApplayform() {
         }
     };
 
-    const handleOtpVerified = async () => {
+    const handleOtpVerified = async () => {//
         try {
             const res = await axios.post("http://localhost:8081/Leaveapply", {
                 ...leaveApplayForm,

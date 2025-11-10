@@ -972,7 +972,7 @@ export default function LoginPage() {
                 )}
 
                 {/* ✅ Info panel */}
-                {role === roles.STAFF ? (
+                {role === roles.STAFF ? (//1
                     <InfoPanel
                         title="Admin Portal"
                         message="Switch to admin login to manage staff & students"
@@ -988,14 +988,11 @@ export default function LoginPage() {
                     />
                 )}
 
-                {/* ✅ Role buttons */}
+                {/* ✅ Role buttons at the bottom */}
                 <div className="role-toggle">
                     <button
                         className={role === roles.STAFF ? "active" : ""}
-                        onClick={() => setRole(roles.STAFF)}
-                    >
-                        Staff
-                    </button>
+                        onClick={() => setRole(roles.STAFF)}>Staff</button>
 
                     <button
                         className={role === roles.ADMIN ? "active" : ""}
