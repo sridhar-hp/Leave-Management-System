@@ -1,11 +1,11 @@
-const{Sequelize,DataTypes}=require('sequelize');
-const sequelize=require('../db');
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = require('../db');
 
-const LeaveApplay=sequelize.define('leaveapplaylist',{
-    sno:{
-        type:DataTypes.INTEGER,
-        autoIncrement:true,
-        primaryKey:true
+const LeaveApplay = sequelize.define('leaveapplaylist', {
+    sno: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
     },
     name: {
         type: DataTypes.STRING,
@@ -41,8 +41,8 @@ const LeaveApplay=sequelize.define('leaveapplaylist',{
     Reason: {
         type: DataTypes.STRING(1000)
     }
-},{ 
+}, {
     freezeTableName: true,
     timestamps: false
 });
-module.exports=LeaveApplay;
+module.exports = LeaveApplay;

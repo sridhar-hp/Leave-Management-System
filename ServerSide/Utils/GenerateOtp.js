@@ -1,4 +1,4 @@
-function GenerateOtp(){
+function GenerateOtp() {
     return Math.floor(100000 + Math.random() * 900000).toString();
 }
-module.exports=GenerateOtp;
+module.exports = GenerateOtp;
