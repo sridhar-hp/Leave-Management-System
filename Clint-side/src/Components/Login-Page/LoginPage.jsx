@@ -824,6 +824,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.CSS"
+import bg from "../../assets/login_bg.webp";
 const roles = { STAFF: "staff", ADMIN: "admin" };//this is use in Infopanalel
 // import { useLocation } from "react-router-dom";
 
@@ -892,7 +893,7 @@ function AdminLoginForm({ staffId, setstaffId, password, setPassword, handlelogi
 // ✅ MAIN LOGINPAGE COMPONENT
 //
 export default function LoginPage() {
-    
+
     const [role, setRole] = useState(roles.STAFF);
     const [staffId, setstaffId] = useState("");
     const [password, setPassword] = useState("");
@@ -945,56 +946,62 @@ export default function LoginPage() {
 
     return (
         <>
-            <div className={`container ${role}`}>
+            <div
+                className="login-full-bg"
+                style={{ backgroundImage: `url(${bg})` }}
+            >
 
-                {/* ✅ Properly passing props */}
-                {role === roles.STAFF ? (
-                    <StaffLoginForm
-                        staffId={staffId}
-                        setstaffId={setstaffId}
-                        password={password}
-                        setPassword={setPassword}
-                        handlelogin={handlelogin}
-                    />
-                ) : (
-                    <AdminLoginForm
-                        staffId={staffId}
-                        setstaffId={setstaffId}
-                        password={password}
-                        setPassword={setPassword}
-                        handlelogin={handlelogin}
-                    />
-                )}
+                <div className={`container ${role}`}>
 
-                {/* ✅ Info panel */}
-                {role === roles.STAFF ? (//1
-                    <InfoPanel
-                        title="Admin Portal"
-                        message="Switch to admin login to manage staff & students"
-                        buttonText="Go to Admin"
-                        onClick={() => setRole(roles.ADMIN)}
-                    />
-                ) : (
-                    <InfoPanel
-                        title="Staff Portal"
-                        message="Switch to staff login"
-                        buttonText="Go to Staff"
-                        onClick={() => setRole(roles.STAFF)}
-                    />
-                )}
+                    {/* ✅ Properly passing props */}
+                    {role === roles.STAFF ? (
+                        <StaffLoginForm
+                            staffId={staffId}
+                            setstaffId={setstaffId}
+                            password={password}
+                            setPassword={setPassword}
+                            handlelogin={handlelogin}
+                        />
+                    ) : (
+                        <AdminLoginForm
+                            staffId={staffId}
+                            setstaffId={setstaffId}
+                            password={password}
+                            setPassword={setPassword}
+                            handlelogin={handlelogin}
+                        />
+                    )}
 
-                {/* ✅ Role buttons at the bottom */}
-                <div className="role-toggle">
-                    <button
-                        className={role === roles.STAFF ? "active" : ""}
-                        onClick={() => setRole(roles.STAFF)}>Staff</button>
+                    {/* ✅ Info panel */}
+                    {role === roles.STAFF ? (//1
+                        <InfoPanel
+                            title="Admin Portal"
+                            message="Switch to admin login to manage staff & students"
+                            buttonText="Go to Admin"
+                            onClick={() => setRole(roles.ADMIN)}
+                        />
+                    ) : (
+                        <InfoPanel
+                            title="Staff Portal"
+                            message="Switch to staff login"
+                            buttonText="Go to Staff"
+                            onClick={() => setRole(roles.STAFF)}
+                        />
+                    )}
 
-                    <button
-                        className={role === roles.ADMIN ? "active" : ""}
-                        onClick={() => setRole(roles.ADMIN)}
-                    >
-                        Admin
-                    </button>
+                    {/* ✅ Role buttons at the bottom */}
+                    <div className="role-toggle">
+                        <button
+                            className={role === roles.STAFF ? "active" : ""}
+                            onClick={() => setRole(roles.STAFF)}>Staff</button>
+
+                        <button
+                            className={role === roles.ADMIN ? "active" : ""}
+                            onClick={() => setRole(roles.ADMIN)}
+                        >
+                            Admin
+                        </button>
+                    </div>
                 </div>
             </div>
         </>
