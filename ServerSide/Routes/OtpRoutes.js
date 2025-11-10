@@ -11,11 +11,12 @@ router.post("/send-otp", async (req, res) => {
   if (!email) return res.status(400).json({ success: false, message: "Email required" });
 
   const otp = generateOtp();
-  const expiresAt = new Date(Date.now() + 5 * 60 * 1000); // expires in 5 minutes
+  const expiresAt = new Date(Date.now() + 5 * 60 * 1000); //// expires in 5 minutes
 
   try {
     await Otp.create({ staff_id, otp, expires_at: expiresAt });
-    await sendEmail(email, "Your Leave Application OTP", `Your OTP is ${otp}`);
+    //send otp by email
+    await sendEmail(email, "Your Leave Application OTP", `Your OTP is ${otp}`);//
 
     return res.json({ success: true, message: "OTP sent to your email" });
   } catch (err) {
