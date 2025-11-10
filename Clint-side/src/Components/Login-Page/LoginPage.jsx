@@ -827,10 +827,6 @@ import "./LoginPage.CSS"
 const roles = { STAFF: "staff", ADMIN: "admin" };
 // import { useLocation } from "react-router-dom";
 
-
-//
-// ✅ STAFF LOGIN FORM (OUTSIDE COMPONENT)
-//
 function StaffLoginForm({ staffId, setstaffId, password, setPassword, handlelogin }) {
   return (
     <div className="login-box">
