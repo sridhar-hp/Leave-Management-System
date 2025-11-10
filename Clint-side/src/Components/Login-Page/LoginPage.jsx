@@ -605,9 +605,9 @@
 //   };
 
 
-  
 
-  
+
+
 
 //   const InfoPanel = ({ title, message, buttonText, onClick }) => (
 //     <div className="welcome-box">
@@ -666,7 +666,7 @@
 //           left: 0;
 //           z-index: 2;
 //           position: relative;
-          
+
 //         }
 
 //         .welcome-box {
@@ -824,189 +824,189 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.CSS"
-const roles = { STAFF: "staff", ADMIN: "admin" };
+const roles = { STAFF: "staff", ADMIN: "admin" };//this is use in Infopanalel
 // import { useLocation } from "react-router-dom";
 
 function StaffLoginForm({ staffId, setstaffId, password, setPassword, handlelogin }) {
-  return (
-    <div className="login-box">
-      <h2>Staff Sign In</h2>
-      <form onSubmit={handlelogin}>
-        <input
-          type="text"
-          placeholder="Staff ID"
-          value={staffId}
-          onChange={(e) => setstaffId(e.target.value)}
-          required
-        />
+    return (
+        <div className="login-box">
+            <h2>Staff Sign In</h2>
+            <form onSubmit={handlelogin}>
+                <input
+                    type="text"
+                    placeholder="Staff ID"
+                    value={staffId}
+                    onChange={(e) => setstaffId(e.target.value)}
+                    required
+                />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
 
-        <button type="submit" className="signin-btn">SIGN IN</button>
-      </form>
-    </div>
-  );
+                <button type="submit" className="signin-btn">SIGN IN</button>
+            </form>
+        </div>
+    );
 }
 
 //
 // ✅ ADMIN LOGIN FORM (OUTSIDE COMPONENT)
 //
 function AdminLoginForm({ staffId, setstaffId, password, setPassword, handlelogin }) {
-  return (
-    <div className="login-box">
-      <h2>Admin Sign In</h2>
-      <form onSubmit={handlelogin}>
-        <input
-          type="text"
-          placeholder="Admin Staff ID"
-          value={staffId}
-          onChange={(e) => setstaffId(e.target.value)}
-          required
-        />
+    return (
+        <div className="login-box">
+            <h2>Admin Sign In</h2>
+            <form onSubmit={handlelogin}>
+                <input
+                    type="text"
+                    placeholder="Admin Staff ID"
+                    value={staffId}
+                    onChange={(e) => setstaffId(e.target.value)}
+                    required
+                />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
 
-        <button type="submit" className="signin-btn">SIGN IN</button>
-      </form>
-    </div>
-  );
+                <button type="submit" className="signin-btn">SIGN IN</button>
+            </form>
+        </div>
+    );
 }
 
 //
 // ✅ MAIN LOGINPAGE COMPONENT
 //
 export default function LoginPage() {
-  const [role, setRole] = useState(roles.STAFF);
-  const [staffId, setstaffId] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+    const [role, setRole] = useState(roles.STAFF);
+    const [staffId, setstaffId] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
-  //
-  // ✅ LOGIN HANDLER
-  //
-  const handlelogin = async (e) => {
-    e.preventDefault();
+    //
+    // ✅ LOGIN HANDLER
+    //
+    const handlelogin = async (e) => {
+        e.preventDefault();
 
-    console.log("Login triggered");
+        console.log("Login triggered");
 
-    try {
-      const response = await axios.post("http://localhost:8081/login", {
-        staffId,
-        password,
-        role,//
-      });
-          const loggedStaffId = response.data.staffId;
+        try {
+            const response = await axios.post("http://localhost:8081/login", {
+                staffId,
+                password,
+                role,//
+            });
+            const loggedStaffId = response.data.staffId;
 
-      alert(response.data.message);
+            alert(response.data.message);
 
-      if (response.data.role === "admin") {
-        navigate("/admin-dashboard");
-      } 
-      
-      else if (response.data.role === "staff") {
+            if (response.data.role === "admin") {
+                navigate("/admin-dashboard");
+            }
 
-        navigate(`/staff-dashboard/${loggedStaffId}`, {
-    state: { staffId: response.data.staffId }
-});
+            else if (response.data.role === "staff") {
 
- } 
-      else {
-        alert("Invalid role ❌");
-      }
+                navigate(`/staff-dashboard/${loggedStaffId}`, {
+                    state: { staffId: response.data.staffId }
+                });
 
-    } catch (err) {
-      console.log(err);
-      alert("Login failed ❌");
-    }
-  };
+            }
+            else {
+                alert("Invalid role ❌");
+            }
 
-  //
-  // ✅ INFO PANEL
-  //
-  const InfoPanel = ({ title, message, buttonText, onClick }) => (
-    <div className="welcome-box">
-      <h2>{title}</h2>
-      <p>{message}</p>
-      <button className="signup-btn" onClick={onClick}>{buttonText}</button>
-    </div>
-  );
+        } catch (err) {
+            console.log(err);
+            alert("Login failed ❌");
+        }
+    };
 
-  return (
-    <>
-
-      {/* ✅ FIXED CSS */}
-      
-      
-
-      <div className={`container ${role}`}>
-        
-        {/* ✅ Properly passing props */}
-        {role === roles.STAFF ? (
-          <StaffLoginForm
-            staffId={staffId}
-            setstaffId={setstaffId}
-            password={password}
-            setPassword={setPassword}
-            handlelogin={handlelogin}
-          />
-        ) : (
-          <AdminLoginForm
-            staffId={staffId}
-            setstaffId={setstaffId}
-            password={password}
-            setPassword={setPassword}
-            handlelogin={handlelogin}
-          />
-        )}
-
-        {/* ✅ Info panel */}
-        {role === roles.STAFF ? (
-          <InfoPanel
-            title="Admin Portal"
-            message="Switch to admin login to manage staff & students"
-            buttonText="Go to Admin"
-            onClick={() => setRole(roles.ADMIN)}
-          />
-        ) : (
-          <InfoPanel
-            title="Staff Portal"
-            message="Switch to staff login"
-            buttonText="Go to Staff"
-            onClick={() => setRole(roles.STAFF)}
-          />
-        )}
-
-        {/* ✅ Role buttons */}
-        <div className="role-toggle">
-          <button
-            className={role === roles.STAFF ? "active" : ""}
-            onClick={() => setRole(roles.STAFF)}
-          >
-            Staff
-          </button>
-
-          <button
-            className={role === roles.ADMIN ? "active" : ""}
-            onClick={() => setRole(roles.ADMIN)}
-          >
-            Admin
-          </button>
+    //
+    // ✅ INFO PANEL
+    //
+    const InfoPanel = ({ title, message, buttonText, onClick }) => (
+        <div className="welcome-box">
+            <h2>{title}</h2>
+            <p>{message}</p>
+            <button className="signup-btn" onClick={onClick}>{buttonText}</button>
         </div>
-      </div>
-    </>
-  );
+    );
+
+    return (
+        <>
+
+            {/* ✅ FIXED CSS */}
+
+
+
+            <div className={`container ${role}`}>
+
+                {/* ✅ Properly passing props */}
+                {role === roles.STAFF ? (
+                    <StaffLoginForm
+                        staffId={staffId}
+                        setstaffId={setstaffId}
+                        password={password}
+                        setPassword={setPassword}
+                        handlelogin={handlelogin}
+                    />
+                ) : (
+                    <AdminLoginForm
+                        staffId={staffId}
+                        setstaffId={setstaffId}
+                        password={password}
+                        setPassword={setPassword}
+                        handlelogin={handlelogin}
+                    />
+                )}
+
+                {/* ✅ Info panel */}
+                {role === roles.STAFF ? (
+                    <InfoPanel
+                        title="Admin Portal"
+                        message="Switch to admin login to manage staff & students"
+                        buttonText="Go to Admin"
+                        onClick={() => setRole(roles.ADMIN)}
+                    />
+                ) : (
+                    <InfoPanel
+                        title="Staff Portal"
+                        message="Switch to staff login"
+                        buttonText="Go to Staff"
+                        onClick={() => setRole(roles.STAFF)}
+                    />
+                )}
+
+                {/* ✅ Role buttons */}
+                <div className="role-toggle">
+                    <button
+                        className={role === roles.STAFF ? "active" : ""}
+                        onClick={() => setRole(roles.STAFF)}
+                    >
+                        Staff
+                    </button>
+
+                    <button
+                        className={role === roles.ADMIN ? "active" : ""}
+                        onClick={() => setRole(roles.ADMIN)}
+                    >
+                        Admin
+                    </button>
+                </div>
+            </div>
+        </>
+    );
 }
 
 
