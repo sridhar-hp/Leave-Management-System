@@ -5,6 +5,10 @@ import StaffDashbord from "./Components/Staff/Dashbord/StaffDashbord.jsx";
 import LeaveApplayform from "./Components/Staff/Leave/LeaveApplayform.jsx";
 import Home from "./Components/Staff/Home/Home.jsx";
 import ADash from "./Components/Admin/AdminDashbord/ADash.jsx";
+import Calendar from "./Components/Admin/Calendar/Calendar.jsx";
+import Employees from "./Components/Admin/Employees/Employees.jsx";
+import LeaveRequest from "./Components/Admin/LeaveRequest/LeaveRequest.jsx";
+
 
 const App = () => {
     return (
@@ -17,7 +21,11 @@ const App = () => {
                     <Route path="LeaveApplayform" element={<LeaveApplayform />} />
 
                 </Route>
-                <Route path="/admin-dashboard" element={<ADash />} />
+                <Route path="/admin-dashboard" element={<ADash />} >
+                <Route path="Employees" element={<Employees />}/>
+                <Route path="LeaveRequest" element={<LeaveRequest />}/>
+                <Route path="Calendar" element={<Calendar />} />
+                </Route>
             </Routes>
         </BrowserRouter>
     );

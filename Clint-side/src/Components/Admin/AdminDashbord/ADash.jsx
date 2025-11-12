@@ -11,9 +11,13 @@ function ADash() {
      <>
             <div className="admcontainer">
 
-                <div className="sdmmenu">
+                <div className="admmenu">
                     <img src={null} alt="collage logo" />
-                    <NavLink to="Employees">Employees</NavLink>
+                    
+                    <NavLink to="Employees"> <FaUsers />Employees</NavLink>
+                    <NavLink to="LeaveRequest"><FaListUl /> LeaveRequests </NavLink>
+                    <NavLink to="Calendar"><FaCalendarAlt/>  Calendar</NavLink>
+
                     
                 </div>
 
