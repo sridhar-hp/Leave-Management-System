@@ -1,8 +1,7 @@
 import React from "react";
 
-function Employees()
-{
-    return(
+function Employees() {
+    return (
         <h1>emplyees detailes</h1>
     )
 }

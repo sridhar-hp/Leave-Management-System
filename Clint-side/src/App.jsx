@@ -22,9 +22,9 @@ const App = () => {
 
                 </Route>
                 <Route path="/admin-dashboard" element={<ADash />} >
-                <Route path="Employees" element={<Employees />}/>
-                <Route path="LeaveRequest" element={<LeaveRequest />}/>
-                <Route path="Calendar" element={<Calendar />} />
+                    <Route path="Employees" element={<Employees />} />
+                    <Route path="LeaveRequest" element={<LeaveRequest />} />
+                    <Route path="Calendar" element={<Calendar />} />
                 </Route>
             </Routes>
         </BrowserRouter>
