@@ -74,6 +74,19 @@ app.post("/Leaveapply", async (req, res) => {
     }
 });
 
+//=============================GET LEAVE REQUESTS ========================================================//
+app.get("/leave-requests", async (req, res)=>{
+    try{
+        const LeaveRequests = await LeaveApplay.findAll();
+        
+        return res.status(200).json(LeaveRequests);
+    }
+    catch(err){
+        console.log(err);
+        return res.status(500).json({message: "server error: ❌ "});
+    }
+});
+//=================================================================================================================//
 app.listen(8081, () => {
     console.log("✅Server running on port 8081");
 });
