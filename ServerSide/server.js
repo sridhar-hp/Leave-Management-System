@@ -75,15 +75,15 @@ app.post("/Leaveapply", async (req, res) => {
 });
 
 //=============================GET LEAVE REQUESTS ========================================================//
-app.get("/leave-requests", async (req, res)=>{
-    try{
+app.get("/leave-requests", async (req, res) => {
+    try {
         const LeaveRequests = await LeaveApplay.findAll();
-        
+
         return res.status(200).json(LeaveRequests);
     }
-    catch(err){
+    catch (err) {
         console.log(err);
-        return res.status(500).json({message: "server error: ❌ "});
+        return res.status(500).json({ message: "server error: ❌ " });
     }
 });
 //=================================================================================================================//
