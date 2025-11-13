@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import "./LeaveRequest.css";
+import axios from "axios";
 
 function LeaveRequest() {
+  const [leaveRequest, setLeaveRequest]=useState([]);
+
+    useEffect(()=>{
+
+      const LRequest = async() =>{
+        try{
+          const res = await axios.get("http://localhost:8081/leave-requests");
+          setLeaveRequest(res.data);
+          console.log(res.data);
+
+        }
+
+        catch(err){
+          console.log(err);
+        }
+      };
+      LRequest();
+    },[]);
 
     
   const leaves = [
