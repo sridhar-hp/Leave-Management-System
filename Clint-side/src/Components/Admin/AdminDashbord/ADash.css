@@ -1,61 +1,61 @@
 /* === Main Dashboard Layout === */
 .admcontainer {
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  background-color: #f5f7fb;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #f5f7fb;
 }
 
 /* === Sidebar === */
 .admmenu {
-  width: 250px;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-top: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    width: 250px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
 }
 
 .admmenu img {
-  width: 120px;
-  margin: 0 auto 25px auto;
-  display: block;
+    width: 120px;
+    margin: 0 auto 25px auto;
+    display: block;
 }
 
 .admmenu a {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 25px;
-  text-decoration: none;
-  color: #333;
-  font-size: 16px;
-  font-weight: 500;
-  transition: all 0.3s ease;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
 .admmenu a:hover {
-  background-color: #f0f4ff;
-  color: #007bff;
+    background-color: #f0f4ff;
+    color: #007bff;
 }
 
 .admmenu a.active {
-  background-color: #007bff;
-  color: #fff;
+    background-color: #007bff;
+    color: #fff;
 }
 
 /* === Content Area (Right Side) === */
 .admcontant {
-  flex: 1;
-  height: 100vh;
-  overflow-y: auto;
-  background-color: #f8f9fb;
-  padding: 40px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    flex: 1;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: #f8f9fb;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
