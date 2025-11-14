@@ -1,8 +1,18 @@
 import React from "react";
+import { FaRegCalendarAlt } from "react-icons/fa";
+import "./Calendar.css";
 
-function Employees() {
+function Calendar() {
     return (
-        <h1>emplyees detailes</h1>
-    )
+        <div className="comingsoon-container-c">
+            <div className="comingsoon-content-c">
+
+                
+                <h2>Coming Soon</h2>
+                <p>This section is under development</p>
+            </div>
+        </div>
+    );
 }
-export default Employees;
+
+export default Calendar;
