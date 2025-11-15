@@ -11,7 +11,7 @@ function LeaveRequest() {
             try {
                 const res = await axios.get("http://localhost:8081/leave-requests");
                 setLeaveRequest(res.data);
-                console.log(res.data);
+                // console.log(res.data);
 
             }
 
