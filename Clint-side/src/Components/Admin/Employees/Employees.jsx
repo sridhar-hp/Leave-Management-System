@@ -1,13 +1,13 @@
 import React from "react";
 import { FaRegCalendarAlt } from "react-icons/fa";
-import "./Calendar.css";
+import "./Employees.css";
 
-function Calendar() {
+function Employees() {
     return (
-        <div className="comingsoon-container-c">
-            <div className="comingsoon-content-c">
+        <div className="comingsoon-container-e">
+            <div className="comingsoon-content-e">
 
-                
+
                 <h2>Coming Soon</h2>
                 <p>This section is under development</p>
             </div>
@@ -15,4 +15,4 @@ function Calendar() {
     );
 }
 
-export default Calendar;
+export default Employees;
