@@ -28,7 +28,7 @@ const LeaveApplay = sequelize.define('leaveapplaylist', {
     Leavetype: {
         type: DataTypes.STRING
     },
-    created_at: {
+    created_at: {// this is optional
         type: DataTypes.DATE,
         defaultValue: Sequelize.NOW
     },
@@ -40,6 +40,10 @@ const LeaveApplay = sequelize.define('leaveapplaylist', {
     },
     Reason: {
         type: DataTypes.STRING(1000)
+    },
+    status: {
+        type: DataTypes.STRING,
+        defaultValue: 'Pending'
     }
 }, {
     freezeTableName: true,
